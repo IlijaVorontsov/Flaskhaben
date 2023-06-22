@@ -16,3 +16,9 @@ pip install -r requirements.txt
 
 ## SQLite Viewer
 https://sqlitebrowser.org/dl/
+
+
+## Andere interessante Flask Module
+Flask-WTF
+Flask-RESTful
+flask-marshmallow
