@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<h1>Welcome {{current_user.username}}</h1>
+<p> Your products are:</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td><a href="{{url_for('product', product_id=product.id)}}">{{product.name}}</a></td>
+      <td>{{product.price}} $</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h1>Welcome to the shop</h1>
+{% endif %}
+{% endblock %}

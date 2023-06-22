@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Add Product{% endblock %}
+{% block content %}
+<form action="{{url_for('edit_product', product_id=product.id)}}" method="POST">
+    <p>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="{{product.name}}">
+    </p>
+    <p>
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price" value="{{product.price}}">
+    </p>
+    <p>
+        <label for="description">Description</label>
+        <textarea name="description" id="description">{{product.description}}</textarea>
+    </p>
+    <p><input type="submit" value="Update Product"></p>
+</form>
+
+<form action="{{url_for('delete_product', product_id=product.id)}}" method="GET">
+    <p><input type="submit" value="Delete Product"></p>
+</form>
+
+{% if error %}
+<p class="error" style="color: red;">{{ error }}</p>
+{% endif %}
+{% if success %}
+<p class="success" style="color: green;">{{ success }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<h1>Products</h1>
+{% if current_user.is_authenticated %}
+<a href="{{url_for('add_product')}}">Add product</a>
+{% endif %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+    <tr>
+      <td><a href="{{url_for('product', product_id=product.id)}}">{{product.name}}</a></td>
+      <td>{{product.price}} $</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+{% endblock %}
